@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "3a3508e1c399f0545dae",
-    "url": "/blindtest-spotify/static/css/main.b682e367.chunk.css"
+    "revision": "6db07d31490a4dd4807d",
+    "url": "/blindtest-spotify/static/css/main.61a8b318.chunk.css"
   },
   {
-    "revision": "3a3508e1c399f0545dae",
-    "url": "/blindtest-spotify/static/js/main.3a3508e1.chunk.js"
+    "revision": "6db07d31490a4dd4807d",
+    "url": "/blindtest-spotify/static/js/main.6db07d31.chunk.js"
   },
   {
-    "revision": "3f7525847cbf7fd2fe0c",
-    "url": "/blindtest-spotify/static/js/1.3f752584.chunk.js"
+    "revision": "6f014f6bed211ed8d04a",
+    "url": "/blindtest-spotify/static/js/1.6f014f6b.chunk.js"
   },
   {
     "revision": "bd4de7ae32d74b318af5",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/blindtest-spotify/static/media/loading.9d4cbf40.svg"
   },
   {
-    "revision": "ebb18c17327e1bf12bb35c68202ce3b3",
+    "revision": "33d7c25e0384ebcda2ec9c2b019f3c07",
     "url": "/blindtest-spotify/index.html"
   }
 ];
