@@ -7,7 +7,7 @@ import './App.css';
 import Sound from 'react-sound';
 import Button from './Button';
 
-const apiToken = 'BQDoYktmwzJL_plZKoJunuzD5Do10ZPemkE1QPKMS_LXwX7jIYhxX5TarVwQfVSCPL0xwBiQoqB8pfDMmoz4fOYn-FeFkVrdqxnN71kO0Xz1rHP6XMgHFuFfTJxl5CPv5qcKz1rQk1jssXmPyIeyXOHDkUTb';
+const apiToken = 'BQDJxSVPMOz3ZOZStsUh5eZb8pFD6J6HffuhK9T4cLf957_eKM9O9rI5N5lXPsjv9lZKSBYtoaIx408qzGFZeW7wp_y1wfABPNDWu2aHTkbxrX8VtTfe5IGRD_qmx5Eb_eubCHsWA5RktRGLH992aEtRwmPS';
 
 function shuffleArray(array) {
   let counter = array.length;
@@ -39,12 +39,12 @@ class App extends Component {
 
   constructor() {
     super();
+    this.timeout = null;
     this.state = {
       songsLoaded: false,
       musicData: null,
       musicNumber: 0,
       currentTrack: null,
-      timeout: null
     };
     console.log("Constructor");
   }
@@ -53,10 +53,12 @@ class App extends Component {
     if (answerId == this.state.currentTrack.id) {
       swal('Bravo', "Bien ouej c'est la bonne musique!!", 'success')
         .then(this.newTrack())
-        /*.then(clearTimeout(this.state.timeout))*/
+        .then(clearTimeout(this.timeout))
+
     }
     else {
-      swal("C'est faux", "Quel échec", 'error').then(this.newTrack());
+      swal("C'est faux", "Quel échec", 'error')
+        .then(this.newTrack())
     }
   }
 
@@ -73,14 +75,14 @@ class App extends Component {
   }
 
   newTrack() {
-    console.log("Début newTrack : ", this.currentTrack);
+    this.timeout = setTimeout(() => {this.newTrack()}, 30000);
+
     let newCurrentTrack = this.state.musicData[getRandomNumber(this.state.musicNumber)].track;
     
     this.setState({
       currentTrack: newCurrentTrack
     })
 
-    console.log("Fin newTrack : ", this.currentTrack);
   }
 
   componentDidMount() {
@@ -98,10 +100,12 @@ class App extends Component {
             musicData: data.items,
             songsLoaded: true,
             musicNumber: data.items.length,
-            currentTrack: data.items[randomNumber].track/*,
-            timeout: setTimeout(this.newTrack(), 30000)*/
+            currentTrack: data.items[randomNumber].track
         })
-        })  
+        this.timeout = setTimeout(() => {this.newTrack()}, 30000);
+        console.log("Timeout is set");
+      })  
+
   }  
 
   render() {
